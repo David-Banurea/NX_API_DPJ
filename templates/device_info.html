@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}Device Info{% endblock %}
+
+{% block content %}
+<h1>Device Info</h1>
+{% if info %}
+<table>
+    <thead>
+        <tr>
+            <th>Field</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for key, value in info.items() %}
+        <tr>
+            <td>{{ key }}</td>
+            <td>{{ value }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No device information found.</p>
+{% endif %}
+<a href="/" class="back-button">Back to Home</a>
+{% endblock %}

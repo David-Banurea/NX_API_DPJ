@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}Show Interfaces{% endblock %}
+
+{% block content %}
+<h1>Show Interfaces</h1>
+
+{% if interfaces %}
+<table>
+    <thead>
+        <tr>
+            <th>Interface</th>
+            <th>State</th>
+            <th>VLAN</th>
+            <th>Type</th>
+            <th>Port Mode</th>
+            <th>Speed</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for interface in interfaces %}
+        <tr>
+            <td>{{ interface["interface"] }}</td>
+            <td>{{ interface["state"] }}</td>
+            <td>{{ interface.get("vlan", "N/A") }}</td>
+            <td>{{ interface.get("type", "N/A") }}</td>
+            <td>{{ interface.get("portmode", "N/A") }}</td>
+            <td>{{ interface.get("speed", "N/A") }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No interfaces found.</p>
+{% endif %}
+<a href="/" class="back-button">Back to Home</a>
+{% endblock %}

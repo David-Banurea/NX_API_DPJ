@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}Interface Detail{% endblock %}
+
+{% block content %}
+<h1>Interface Detail</h1>
+
+<form method="POST">
+    <label for="interface_name">Select Interface:</label>
+    <select name="interface_name" id="interface_name" required>
+        <option value="" disabled selected>Select an interface</option>
+        {% for interface in interfaces %}
+        <option value="{{ interface.interface }}">{{ interface.interface }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Get Details</button>
+</form>
+
+{% if error %}
+<p style="color: red;">{{ error }}</p>
+{% endif %}
+
+{% if detail %}
+<h2>Details for {{ detail.interface }}</h2>
+<table>
+    <tr><td>Interface</td><td>{{ detail.interface }}</td></tr>
+    <tr><td>State</td><td>{{ detail.state }}</td></tr>
+    <tr><td>VLAN</td><td>{{ detail.vlan }}</td></tr>
+    <tr><td>Type</td><td>{{ detail.type }}</td></tr>
+    <tr><td>Port Mode</td><td>{{ detail.portmode }}</td></tr>
+    <tr><td>Speed</td><td>{{ detail.speed }}</td></tr>
+</table>
+{% elif request.method == 'POST' %}
+<p>No details found for the selected interface.</p>
+{% endif %}
+
+<a href="/" class="back-button">Back to Home</a>
+{% endblock %}

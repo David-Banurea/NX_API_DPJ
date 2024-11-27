@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}NX-API Dashboard{% endblock %}
+
+{% block content %}
+<h1>Selamat Datang di Tugas Rancang DPJ H</h1>
+<form action="/navigate" method="POST">
+    <label for="command">Command Type :</label>
+    <select name="command" id="command">
+        <option value="show_interfaces">Show Interfaces</option>
+        <option value="interface_detail">Interface Detail</option>
+        <option value="device_info">Device Info</option>
+        <option value="non_vlan_interfaces">Non-VLAN Interfaces</option>
+    </select>
+    <button type="submit">Go</button>
+</form>
+{% endblock %}
